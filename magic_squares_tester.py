@@ -7,6 +7,9 @@ def magic_square_tester(mgc_sqr, target_value):
     Given an array that is a solved magic square & a target value, return a dictionary with the keys being
     the rows, coloumns, & diagonals and the values being a bool of the sum of that row, column, or diagonal
     compared to the target value.
+
+    If your solution returns any False values, uncomment the corresponding print statement and re-run to see
+    the sum of the diagonals, columns, or rows to help track down where your answer went wrong.
     """
 
     solution_dict = {}
@@ -15,10 +18,9 @@ def magic_square_tester(mgc_sqr, target_value):
     #traverse the diagonals of the array and get the sum of all numbers there-in and compare that sum to the target value
     top_left_diag = sum([mgc_sqr[n][n] for n in range(len(mgc_sqr))]) == target_value
     #print(f'Top left diagonal sum: {sum([mgc_sqr[n][n] for n in range(len(mgc_sqr))])}')
-    #uncomment the above print statement to see sums if top left diagonal returns as False
+    
     bottom_left_diag = sum([mgc_sqr[x][len(mgc_sqr)-x-1] for x in range(len(mgc_sqr))]) == target_value
     #print(f'Bottom left diagonal sum: {sum([mgc_sqr[x][len(mgc_sqr)-x-1] for x in range(len(mgc_sqr))])}')
-    #uncomment the above print statement to see sums if bottom left diagonal returns as False
 
     #this list of the bools of the sums compared to the target value will be the values of the solution dictionary
     array_bools = [top_left_diag, bottom_left_diag]
@@ -33,12 +35,12 @@ def magic_square_tester(mgc_sqr, target_value):
 
     for n in range(len(mgc_sqr)): #sum and compare each row to the target value
         row = sum(mgc_sqr[n]) == target_value
-        #print(f'Row-{n} sum: {sum(mgc_sqr[n])}')  #uncomment this line to see sums if any rows return as False
+        #print(f'Row-{n} sum: {sum(mgc_sqr[n])}')  
         array_bools.append(row)
 
     for cols in range(len(mgc_sqr)): #sum and compare each column to the target value
         col = sum(columns[cols]) == target_value
-        #print(f'Col-{cols} sum: {sum(columns[cols])}')  #uncomment this line to see sums if any columns return as False
+        #print(f'Col-{cols} sum: {sum(columns[cols])}')  
         array_bools.append(col)
 
     for i in range(len(array_bools)): #build solution dictionary from the angles and array_bools lists
